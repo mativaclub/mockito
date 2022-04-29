@@ -11,6 +11,6 @@ public interface EmployeeService {
     Employee find(String firstName, String lastName);
     List<Employee> getAll();
     String getKey(String firstName, String lastName);
-    void validateNames(String... names);
+//    void validateNames(String... names);
 
 }
