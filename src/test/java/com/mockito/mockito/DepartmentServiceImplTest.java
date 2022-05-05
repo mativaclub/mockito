@@ -64,20 +64,20 @@ public class DepartmentServiceImplTest {
     @Test
     public void shouldReturnAllEmployeesByDepartmentWhenEmployeeExist() {
         when(employeeService.getAll()).thenReturn(DIFF_DEPARTMENT_EMPLOYEES);
-        assertEquals(DEPARTMENT_MAP, out.findEmployeeByDepartment(DEPARTMENT_ID));
+        assertEquals(DEPARTMENT_MAP.get(1), out.findEmployeeByDepartment(DEPARTMENT_ID));
     }
 
     @Test
     public void shouldReturnEmptyMapWhenEmployeeDontExist() {
         when(employeeService.getAll()).thenReturn(emptyList());
-        assertEquals(emptyMap(), out.findEmployeeByDepartment(DEPARTMENT_ID));
+        assertEquals(emptyMap(), out.getAllEmployeesByDepartment());
     }
 
     @Test
     public void shouldReturnEmployeeDepartmentsWhenDepartmentIsCorrectAndEmployeeExistThere() {
         when(employeeService.getAll()).thenReturn(DIFF_DEPARTMENT_EMPLOYEES);
         assertEquals(singletonList(MIN_SALARY_EMPLOYEE), out.findEmployeeByDepartment(DEPARTMENT_ID));
-        assertEquals(singletonList(DIFF_DEPARTMENT_EMPLOYEES), out.findEmployeeByDepartment(BAD_DEPARTMENT_ID));
+        assertEquals(singletonList(DIFFERENT_DEPARTMENT_EMPLOYEE), out.findEmployeeByDepartment(BAD_DEPARTMENT_ID));
 
     }
 
